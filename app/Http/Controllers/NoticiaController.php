@@ -44,7 +44,7 @@ class NoticiaController extends Controller
             'descricao'=>$data['descricao'],
         ]);
 
-        return redirect('/cadastrar-noticia')->with('message','Notícia cadastrada com sucesso!');
+        return redirect('/noticias')->with('message','Notícia cadastrada com sucesso!');
     }
 
     public function edit($id_noticia)
@@ -70,5 +70,11 @@ class NoticiaController extends Controller
         ]);
 
         return redirect('/noticias')->with('message','Notícia editada com sucesso!');
+    }
+
+    public function destroy($id_noticia)
+    {
+        $noticia = Noticia::find($id_noticia)->delete();
+        return redirect('/noticias')->with('message','Notícia deletada com sucesso!');
     }
 }
