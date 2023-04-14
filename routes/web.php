@@ -39,12 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-	
-	Route::get('noticia', ['as' => 'noticia.create', 'uses' => 'App\Http\Controllers\NoticiaController@create']);
+
 });
 
 Route::controller(App\Http\Controllers\NoticiaController::class)->group(function () {
-    // Route::get('/noticias', 'index')->middleware(['auth', 'verified'])->name('index');
+    Route::get('/noticias', 'index')->middleware(['auth', 'verified'])->name('index');
     Route::get('/cadastrar-noticia', 'create')->middleware(['auth', 'verified'])->name('cadastrar-noticia');
     Route::post('/cadastrar-noticia', 'store')->middleware(['auth', 'verified'])->name('cadastrar-noticia');
     // Route::get('/editar-noticia/{id_noticia}', 'edit')->middleware(['auth', 'verified'])->name('editar-noticia');
