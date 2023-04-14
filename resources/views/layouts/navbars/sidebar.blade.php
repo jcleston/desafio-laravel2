@@ -35,12 +35,26 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                <a href="/cadastrar-noticia">
+                    <i class="tim-icons icon-notes"></i>
+                    <p>Cadastrar Notícia</p>
+                </a>
+            </li>
+            <li>
+                <a href="/noticias">
+                    <i class="tim-icons icon-paper"></i>
+                    <p>Notícias</p>
+                </a>
+            </li>
+
             <li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ _('Icons') }}</p>
                 </a>
             </li>
+
             <li @if ($pageSlug == 'maps') class="active " @endif>
                 <a href="{{ route('pages.maps') }}">
                     <i class="tim-icons icon-pin"></i>
