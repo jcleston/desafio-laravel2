@@ -5,13 +5,13 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h5 class="title">{{ _('Cadastrar Notícia') }}</h5>
+                <h5 class="title">{{ _('Editar Notícia') }}</h5>
             </div>
 
-            <form action="{{url('cadastrar-noticia')}}" method="POST" autocomplete="off">
+            <form action="{{ url('editar-noticia/'.$noticia->id) }}" method="POST">
                 <div class="card-body">
                     @csrf
-
+                    @method('PUT')
 
                     @include('alerts.success')
 
@@ -19,7 +19,7 @@
                         <label>{{ _('Título') }}</label>
                         <input type="text" name="titulo"
                             class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}"
-                            placeholder="{{ _('Título') }}" value="{{ old('titulo', auth()->user()->titulo) }}">
+                            placeholder="{{ _('Título') }}" value="{{ $noticia->titulo }}">
                         @include('alerts.feedback', ['field' => 'titulo'])
                     </div>
 
@@ -28,12 +28,12 @@
                         <input type="text" name="descricao"
                             class="form-control{{ $errors->has('descricao') ? ' is-invalid' : '' }}"
                             placeholder="{{ _('Descrição') }}"
-                            value="{{ old('descricao', auth()->user()->descricao) }}">
+                            value="{{ $noticia->descricao }}">
                         @include('alerts.feedback', ['field' => 'email'])
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-fill btn-primary">{{ _('Cadastrar') }}</button>
+                    <button type="submit" class="btn btn-fill btn-primary">{{ _('Editar') }}</button>
                 </div>
             </form>
         </div>

@@ -46,4 +46,29 @@ class NoticiaController extends Controller
 
         return redirect('/cadastrar-noticia')->with('message','Notícia cadastrada com sucesso!');
     }
+
+    public function edit($id_noticia)
+    {
+        //$noticia = Noticia::find($id_noticia);
+
+        //Garantindo que ao editar pela url, somente o dono acesse sua noticia, isso gera erro na aplicação, melhorar depois
+        $noticias = Noticia::where("id_user", Auth::user()->id)->get();
+        $noticia = $noticias->find($id_noticia);
+
+        //criar condição para verificar se a noticia pertence ao usuário, caso não, redirecionar e emitir mensagem
+
+        return view('noticia.editar', compact('noticia'));
+    }
+
+    public function update(NoticiaFormRequest $request, $id_noticia)
+    {
+        $data = $request->validated();
+
+        $noticia = Noticia::where('id', $id_noticia)->update([
+            'titulo' => $data['titulo'],
+            'descricao' => $data['descricao']
+        ]);
+
+        return redirect('/noticias')->with('message','Notícia editada com sucesso!');
+    }
 }
