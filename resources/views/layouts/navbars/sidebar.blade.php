@@ -48,7 +48,7 @@
                 </a>
             </li>
 
-            <li @if ($pageSlug == 'icons') class="active " @endif>
+            <!--<li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
                     <p>{{ _('Icons') }}</p>
@@ -90,7 +90,7 @@
                     <i class="tim-icons icon-spaceship"></i>
                     <p>{{ _('Upgrade to PRO') }}</p>
                 </a>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
